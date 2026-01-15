@@ -27,9 +27,9 @@ modify the paths if you need to.
 ## Task 1 - Dot product of two large vectors
 
 Let us assume that there are two large arrays `A[N]` and `B[N]` where N is the
-number of elements and it is very large (e.g. 512*1024*1024).
+number of elements and it is very large (e.g. 512 $\times$ 1024 $\times$ 1024).
 If you are running on crocodile, you may need to shrink this size to
-128*1024*1024 (or even 120*1024*1024. Your memory usage is limited to 1GBs).
+128 $\times$ 1024 $\times$ 1024 (or even 120 $\times$ 1024 $\times$ 1024. Your memory usage is limited to 1GBs).
 
 Initialize the two arrays with some value. (Fill them with some random value
 using the rand() function).
