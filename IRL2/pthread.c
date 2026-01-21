@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <omp.h>
+#include <pthread.h>
 
 int main () {
     int N = 512 * 1024 * 1024;
@@ -31,3 +32,4 @@ int main () {
 
     return 0;
 }
+
