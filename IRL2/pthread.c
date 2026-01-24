@@ -5,9 +5,9 @@
 
 #define NUM_THREADS 8
 
-    int N = 512 * 1024 * 1024;
-    int *A, *B;
-    long dot_product = 0;
+int N = 512 * 1024 * 1024;
+int *A, *B;
+long dot_product = 0;
 pthread_mutex_t mutex;
 
 typedef struct {
@@ -43,7 +43,7 @@ int main () {
         A[i] = 1;
         B[i] = 2;
     }
-pthread_t threads[NUM_THREADS];
+    pthread_t threads[NUM_THREADS];
     ThreadData thread_data[NUM_THREADS];
     pthread_mutex_init(&mutex, NULL);
 
@@ -52,7 +52,7 @@ pthread_t threads[NUM_THREADS];
     //Now running time-stamp
     begin = omp_get_wtime();
     for (int i = 0; i < NUM_THREADS; i++) {
-thread_data[i].start = i * chunk;
+        thread_data[i].start = i * chunk;
         thread_data[i].end = (i == NUM_THREADS - 1) ? N : (i + 1) * chunk;
         pthread_create(&threads[i], NULL, dot_product_thread, (void*)&thread_data[i]);
     }
