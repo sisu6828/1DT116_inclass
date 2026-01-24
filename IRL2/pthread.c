@@ -41,7 +41,7 @@ int main () {
     //Initialize arrays
     for (int i = 0; i < N; i++) {
         A[i] = 1;
-        B[i] = 1;
+        B[i] = 2;
     }
 
     //Now running time-stamp
