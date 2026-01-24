@@ -51,8 +51,14 @@ pthread_t threads[NUM_THREADS];
 
     //Now running time-stamp
     begin = omp_get_wtime();
-    for (int i = 0; i < N; i++) {
-        dot_product += A[i] * B[i];
+    for (int i = 0; i < NUM_THREADS; i++) {
+thread_data[i].start = i * chunk;
+        thread_data[i].end = (i == NUM_THREADS - 1) ? N : (i + 1) * chunk;
+        pthread_create(&threads[i], NULL,         dot_product_thread, (void*)&thread_data[i]);
+    }
+
+    for (int i = 0; i < NUM_THREADS; i++) {
+        pthread_join(threads[i], NULL);
     }
     end = omp_get_wtime();
 
