@@ -3,7 +3,8 @@
 #include <omp.h>
 #include <pthread.h>
 
-int main () {
+#define NUM_THREADS 8
+
     int N = 512 * 1024 * 1024;
     int *A, *B;
     long dot_product = 0;
