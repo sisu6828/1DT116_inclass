@@ -43,6 +43,11 @@ int main () {
         A[i] = 1;
         B[i] = 2;
     }
+pthread_t threads[NUM_THREADS];
+    ThreadData thread_data[NUM_THREADS];
+    pthread_mutex_init(&mutex, NULL);
+
+    int chunk = N / NUM_THREADS;
 
     //Now running time-stamp
     begin = omp_get_wtime();
