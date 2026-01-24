@@ -8,6 +8,13 @@
     int N = 512 * 1024 * 1024;
     int *A, *B;
     long dot_product = 0;
+pthread_mutex_t mutex;
+
+typedef struct {
+    int start;
+    int end;
+} ThreadData;
+
     double begin,end; // Timestamps for beginning and end of computation
 
     //Allocate Array A and B with N elements
