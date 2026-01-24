@@ -54,7 +54,7 @@ pthread_t threads[NUM_THREADS];
     for (int i = 0; i < NUM_THREADS; i++) {
 thread_data[i].start = i * chunk;
         thread_data[i].end = (i == NUM_THREADS - 1) ? N : (i + 1) * chunk;
-        pthread_create(&threads[i], NULL,         dot_product_thread, (void*)&thread_data[i]);
+        pthread_create(&threads[i], NULL, dot_product_thread, (void*)&thread_data[i]);
     }
 
     for (int i = 0; i < NUM_THREADS; i++) {
