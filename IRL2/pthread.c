@@ -15,6 +15,22 @@ typedef struct {
     int end;
 } ThreadData;
 
+void* dot_product_thread(void* arg) {
+    ThreadData* data = (ThreadData*)arg;
+    long long local_sum = 0;
+
+    for (int i = data->start; i < data->end; i++) {
+        local_sum += A[i] * B[i];
+    }
+
+    pthread_mutex_lock(&mutex);
+    dot_product += local_sum;
+    pthread_mutex_unlock(&mutex);
+
+    return NULL;
+}
+
+int main () {
     double begin,end; // Timestamps for beginning and end of computation
 
     //Allocate Array A and B with N elements
