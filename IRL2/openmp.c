@@ -12,12 +12,13 @@ int main () {
     A = (int *) malloc (N * sizeof(int));
     B = (int *) malloc (N * sizeof(int));
     
-    omp_set_num_threads(4);
+    // omp_set_num_threads(8);
 
     #pragma omp parallel
     {
         int tid = omp_get_thread_num();
         printf("Hello World from thread %d\n", tid);
+        printf("11/3 is: %d\n", 11/3);
     }
 
     //Initialize arrays
@@ -31,8 +32,9 @@ int main () {
 
     //Now running time-stamp
     begin = omp_get_wtime();
-    #pragma omp parallel default (none) for reduction(+:dot_product) private(i) shared(N, A, B)
+    #pragma omp parallel reduction(+:dot_product)     
     for (int i = 0; i < N; i++) {
+        #pragma omp atomic
         dot_product += A[i] * B[i];
     }
     end = omp_get_wtime();

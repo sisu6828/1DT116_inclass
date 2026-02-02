@@ -20,6 +20,8 @@ isPrime: isPrime.c
 pi: pi.c
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< -fopenmp
 
+g: g.c
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< -fopenmp
 
 clean:
 	rm -f $(TARGET)
